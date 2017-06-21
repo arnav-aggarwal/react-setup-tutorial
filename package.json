@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/arnav-aggarwal/react-setup-tutorial/issues"
   },
-  "homepage": "https://github.com/arnav-aggarwal/react-setup-tutorial#readme"
+  "homepage": "https://github.com/arnav-aggarwal/react-setup-tutorial#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }
