@@ -1,0 +1,27 @@
+{
+  "name": "react-setup-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnav-aggarwal/react-setup-tutorial.git"
+  },
+  "keywords": [
+    "react",
+    "webpack",
+    "babel",
+    "node",
+    "express"
+  ],
+  "author": "Arnav Aggarwal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arnav-aggarwal/react-setup-tutorial/issues"
+  },
+  "homepage": "https://github.com/arnav-aggarwal/react-setup-tutorial#readme"
+}
