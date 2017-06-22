@@ -187,7 +187,7 @@ At this point you should have added [these changes](https://github.com/arnav-agg
 
 At this point, nothing is being minified, so the code is all pretty long. Open up `dist/app.bundle.js` and see what’s inside if you like. To make webpack minify your code, use the production flag, `-p`. Type in `webpack -p` and look at the bundle file. You’ll see one long line of unreadable code with all unnecessary whitespace removed.
 
-![server-output](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/start-server.png)
+![minified code](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/minified.png)
 
 An issue with using a bundle instead of our source code is that it makes debugging more difficult. If we open our HTML file in the browser now, we’ll see this:
 
