@@ -87,6 +87,8 @@ You should have [these changes](https://github.com/arnav-aggarwal/react-setup-tu
 
 ### Webpack
 
+![webpack logo](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/webpack.png)
+
 #### What It Does
 
 Common practice in the React ecosystem is to bundle all of the different Javascript and CSS files we write into one big file. Webpack is the tool for the job. During the bundling, we’ll have webpack perform some more actions.
