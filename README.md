@@ -2,6 +2,8 @@
 
 ## React, Webpack, Babel, Node, Express
 
+![React logo](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/react-logo.png)
+
 ### What This Guide is For
 
 React is arguably the hottest framework currently used by the web development community at this point. It makes large, dynamic, single-page applications faster and easier to develop while providing speed optimizations that can make sites blazingly fast. Unfortunately, for newcomers and even more seasoned developers, setting up the React development environment for the first time is difficult, frustrating, and daunting. There are boilerplates such as [create-react-app](https://github.com/facebookincubator/create-react-app) readily available for people who want to skip configuration and get started, but using them doesn’t provide insight into what’s actually going on.
@@ -73,9 +75,11 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => console.log('Listening on port', port));
 ```
+
 Run `npm start` (this is a built-in alias for `node server.js`). You should see something like this.
 
-# IMAGE
+![start server](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/start-server.png)
+
 
 Verify that the server is working by going to [localhost:8080](localhost:8080). You should see the word ‘React’ on the page. Awesome, we have a basic HTML file and server!
 
@@ -181,11 +185,11 @@ At this point you should have added [these changes](https://github.com/arnav-agg
 
 At this point, nothing is being minified, so the code is all pretty long. Open up `dist/app.bundle.js` and see what’s inside if you like. To make webpack minify your code, use the production flag, `-p`. Type in `webpack -p` and look at the bundle file. You’ll see one long line of unreadable code with all unnecessary whitespace removed.
 
-# IMAGE
+![server-output](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/start-server.png)
 
 An issue with using a bundle instead of our source code is that it makes debugging more difficult. If we open our HTML file in the browser now, we’ll see this:
 
-# IMAGE
+![console.log without sourcemap](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/no-sourcemap.png)
 
 The stack trace for the `console.log` statement tells us to go to `app.bundle.js`, line 73. That’s not very useful. We want the stack trace to show our files correctly. 
 
@@ -197,7 +201,7 @@ webpack -d
 
 Now, we get a better log. We can actually see that it comes from line 1 in `index.js`.
 
-# IMAGE
+![console.log with sourcemap](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/sourcemap.png)
 
 While developing, it’s not fun to have to type webpack over and over again. Using the --watch flag during development means webpack will watch our files and re-generate the bundle every time we save a change. **During development, we’ll want to use both the development flag and the watch flag, so our command will be**
 
@@ -208,6 +212,8 @@ webpack -d --watch
 *Every time you change `webpack.config.js`, you’ll need to restart webpack for the changes to affect your bundle.
 
 ### Babel
+
+![Babel logo](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/babel.png)
 
 I mentioned earlier that we want to be able to use new, shiny ES6 code while making our websites cross-browser compatible. Babel is the library we’ll use to transpile our code, and we’ll configure webpack to do it for us when we run the webpack command. Go ahead and install these three dependencies.
 
@@ -346,11 +352,11 @@ We need React in scope because our transpiled code needs access to it, even thou
 
 Run webpack on the terminal to transpile your code. Start the server with npm start and go to [localhost:8080](localhost:8080). You should see what you expect. If we open your browser’s dev tools and inspect the text, we see our div nested inside the `#container` div present in our original HTML.
 
-# IMAGE
+![my first component](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/my_first_component.png)
 
 ### JSX
 
-# IMAGE
+![JSX](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/jsx.png)
 
 I said we’re writing stuff that looks like HTML. It’s not actually HTML. It’s something called [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html). JSX is something created by Facebook that provides an easy, mostly straightforward syntax to help us write React components. For the most part, it’s very similar to HTML, with a few key differences.
 
@@ -408,7 +414,7 @@ On the DOM, this looks like:
 </div>
 ```
 
-# IMAGE
+![DOM image](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/jsx-2.png)
 
 #### Refactoring the Component
 
@@ -634,7 +640,7 @@ import '../styles/app.css';
 
 With webpack running, if we refresh our web page we should see the styled changes.
 
-# IMAGE
+![styled component](https://github.com/arnav-aggarwal/react-setup-tutorial/blob/readme/readme_images/styled.png)
 
 The final changes are [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/2133261712bfb051877647a1cfc7cc14b78b4b4e). The complete repository is at:
 
@@ -649,3 +655,4 @@ If this was useful, please hit the heart and feel free to check out my other art
 https://medium.com/@arnav_aggarwal
 
 ### That’s it. Go learn React.
+
