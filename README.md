@@ -4,11 +4,11 @@
 
 ### What This Guide is For
 
-React is arguable the hottest framework currently used by the web development community at this point. It makes large, dynamic, single-page applications faster and easier to develop while providing speed optimizations that can make sites blazingly fast. Unfortunately, for newcomers and even more seasoned developers, setting up the React development environment for the first time is difficult, frustrating, and daunting. There are boilerplates such as create-react-app readily available for people who want to skip configuration and get started, but using them doesn’t provide insight into what’s actually going on.
+React is arguably the hottest framework currently used by the web development community at this point. It makes large, dynamic, single-page applications faster and easier to develop while providing speed optimizations that can make sites blazingly fast. Unfortunately, for newcomers and even more seasoned developers, setting up the React development environment for the first time is difficult, frustrating, and daunting. There are boilerplates such as [create-react-app](https://github.com/facebookincubator/create-react-app) readily available for people who want to skip configuration and get started, but using them doesn’t provide insight into what’s actually going on.
 
 **This article is meant to take you through the setup process while teaching you as much as possible about what you and the tools you’re using are doing.** The technologies we’ll discuss are what the React community has decided to embrace in the front-end ecosystem and what you’ll see professional developers and industry leaders using. It’s also what you’ll see in most examples online. There’s a whole ton of tools and configuration purposely left out as this is meant to be a bare-bones beginners’ guide.
 
-To see what we’ll be working towards, go to [https://github.com/arnav-aggarwal/react-setup-tutorial](https://github.com/arnav-aggarwal/react-setup-tutorial).
+The state of the current master branch of this repository is what we'll be working towards.
 
 This article requires some elementary proficiency with HTML, Javascript (including very basic ES6 syntax), CSS, Node, and preferably Express. **If you can make a to-do app, you’re ready for this**. Let’s get started.
 
@@ -18,7 +18,7 @@ I’m using npm v 5 and Node v 8. If you’re using an older version of Node you
 
 #### Initial Configuration
 
-Let’s set up a very basic file system. Run `npm init` and get a `package.json`. Let’s add a few files. In your project’s root directory, create a file called `server.js` and a folder called **`dist`**. dist is where we will store all client-facing code. In dist, create an app.html file. Make sure your file structure looks like this. Files are in normal font and folders are bold. 
+Let’s set up a very basic file system. Run `npm init` and get a `package.json`. Let’s add a few files. In your project’s root directory, create a file called `server.js` and a folder called **`dist`**. **`dist`** is where we will store all client-facing code. In dist, create an app.html file. Make sure your file structure looks like this. Files are in normal font and folders are bold. 
 
 <pre>
 <b>project_root</b>
@@ -31,11 +31,11 @@ Let’s set up a very basic file system. Run `npm init` and get a `package.json`
 |---server.js
 </pre>
 
-You should be [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/bc5495656c516509645a5d9e8b0e565fa61cff93).
+The file structure can also be viewed [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/bc5495656c516509645a5d9e8b0e565fa61cff93).
 
 #### Basic HTML File
 
-Let’s write to our app.html file. Note that we have a div with an ID of container in the body, containing only the word ‘React’.
+Let’s write to our `dist/app.html` file. Note that we have a div with an ID of `container` in the body, containing only the word ‘React’.
 
 ```
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ Let’s write to our app.html file. Note that we have a div with an ID of contai
 
 #### Basic Express Server
 
-Run `npm install express`. You’ll get a `package-lock.json` if using npm 5. In `server.js`, we’ll write some code to get a basic Express server up and running. If you’ve set up an Express server before, this shouldn’t be new. If you haven’t used Express, it’s not critical to learning React. Just know that this creates a server on `port 8080` and serves up `dist/app.html`.
+Run `npm install express`. You’ll get a `package-lock.json` if using npm 5. In `server.js`, we’ll write some code to get a basic Express server up and running. If you’ve set up an Express server before, this shouldn’t be new. If you haven’t used Express, it’s not critical to learning React. Just know that this creates a server on port 8080 and serves up `dist/app.html`.
 
 ```
 const express = require('express');
@@ -73,13 +73,13 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => console.log('Listening on port', port));
 ```
-Run npm start(this is a built-in alias for node server.js). You should see something like this.
+Run `npm start` (this is a built-in alias for `node server.js`). You should see something like this.
 
-IMAGE
+# IMAGE
 
 Verify that the server is working by going to [localhost:8080](localhost:8080). You should see the word ‘React’ on the page. Awesome, we have a basic HTML file and server!
 
-You should be [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/e5d3ad4bb129ee1b05947372a4f65675fa36eb50).
+You should have [these changes](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/e5d3ad4bb129ee1b05947372a4f65675fa36eb50).
 
 ### Webpack
 
@@ -87,7 +87,7 @@ You should be [here](https://github.com/arnav-aggarwal/react-setup-tutorial/comm
 
 Common practice in the React ecosystem is to bundle all of the different Javascript and CSS files we write into one big file. Webpack is the tool for the job. During the bundling, we’ll have webpack perform some more actions.
 
-- It’ll resolve our dependencies by going into the modules we import and concatenating those as well, pulling them out of our node_modules and putting them at the top of our single file. It’ll recursively go through every dependency and the dependencies’ dependencies, resolving all the way down and generating one massive bundle.
+- It’ll resolve our dependencies by going into the modules we import and concatenating those as well, pulling them out of our `node_modules` and putting them at the top of our single file. It’ll recursively go through every dependency and the dependencies’ dependencies, resolving all the way down and generating one massive bundle.
 
 - It’ll transpile our farm-fresh, cutting-edge ES6 down into ES5 so that it’ll work on virtually every browser.
 
@@ -97,7 +97,7 @@ In the end, we’ll be able to write modular, modern Javascript and CSS that we 
 
 #### Getting Started
 
-Let’s create a folder named src in our root directory. This will contain all of our Javascript and CSS. For now, we’ll focus on the Javascript, so put a file called `index.js` into **`src`**. In `src/index.js`, put a single line of code:
+Let’s create a folder named **`src`** in our root directory. This will contain all of our Javascript and CSS. For now, we’ll focus on the Javascript, so put a file called `index.js` into **`src`**. In `src/index.js`, put a single line of code:
 
 ```
 console.log('Testing our bundle');
@@ -109,7 +109,7 @@ With webpack, `src/index.js` will be our starting point, or entry point. Webpack
 npm install -D webpack
 ```
 
-Webpack requires a configuration file called `webpack.config.js`. Let’s create this file in our root directory. Excluding node_modules, our file structure now looks like this.
+Webpack requires a configuration file called `webpack.config.js`. Let’s create this file in our root directory. Excluding `node_modules`, our file structure now looks like this.
 
 <pre>
 <b>project_root</b>
@@ -141,7 +141,7 @@ module.exports = {
 };
 ```
 
-What our configuration object is telling webpack to do is to start at the entry point, `src/index.js`. It’ll go into that file, resolve all dependencies, and bundle them into the output path provided, the folder dist. It’ll name the new bundled file `app.bundle.js`.
+What our configuration object is telling webpack to do is to start at the entry point, `src/index.js`. It’ll go into that file, resolve all dependencies, and bundle them into the output path provided, the folder **`dist`**. It’ll name the new bundled file `app.bundle.js`.
 
 Go ahead and run `webpack` on the command line and see what happens.
 
@@ -151,7 +151,7 @@ Done? Good. You should see `app.bundle.js` magically appear in your **`dist`** f
 node dist/app.bundle.js
 ```
 
-You should see `Testing our bundle` log on your Node console. Congratulations, you’ve created your first webpack build!
+You should see '`Testing our bundle`' log on your Node console. Congratulations, you’ve created your first webpack build!
 
 If using git, you’ll want to add `dist/app.bundle.js` to your `.gitignore`. We only want to keep track of the source files, not the generated bundle.
 
@@ -173,29 +173,37 @@ Eventually, we’re going to want to run the code in this file to generate our a
 </html>
 ```
 
-If you open up `dist/app.html` in the browser, you’ll now see the ‘Testing our bundle’ statement log to the browser’s console.
+If you open up `dist/app.html` in the browser, you’ll now see the ‘`Testing our bundle`’ statement log to the browser’s console.
 
-At this point you should be [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/57b0ecd0684e85b971c9b38977ff62398201d051).
+At this point you should have added [these changes](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/57b0ecd0684e85b971c9b38977ff62398201d051).
 
 #### Flags
 
-At this point, nothing is being minified, so the code is all pretty long. Open up `dist/app.bundle.js` and see what’s inside if you like. To make webpack minify your code, use the production flag, `-p`. Type in `webpack -p` and look at the bundle file. You’ll see one long line of unreadable code with no unnecessary whitespace present.
+At this point, nothing is being minified, so the code is all pretty long. Open up `dist/app.bundle.js` and see what’s inside if you like. To make webpack minify your code, use the production flag, `-p`. Type in `webpack -p` and look at the bundle file. You’ll see one long line of unreadable code with all unnecessary whitespace removed.
 
-While developing, it’s not fun to have to type webpack over and over again. Using the `--watch` flag during development means webpack will watch our files and re-generate the bundle every time we save. 
+# IMAGE
 
 An issue with using a bundle instead of our source code is that it makes debugging more difficult. If we open our HTML file in the browser now, we’ll see this:
 
-IMAGE
+# IMAGE
 
-The stack trace for the console.log statement tells us to go to `app.bundle.js`, line 73. That’s not very useful. We want the stack trace to show our files correctly. 
+The stack trace for the `console.log` statement tells us to go to `app.bundle.js`, line 73. That’s not very useful. We want the stack trace to show our files correctly. 
 
-We need a source-map — a way to tell the browser to display errors and logs according to the source and not the final bundle. Using the development flag, `-d`, will tell webpack to generate a source map around our code. During development, we’ll want to use both the development flag and the watch flag, so our command will be 
+We need a source-map — a way to tell the browser to display errors and logs according to the _source_ and not the final bundle. Using the development flag, `-d`, will tell webpack to generate a source map around our code. A source map adds a considerable amount of code, so the file size will be larger. Using the development flag,-d, will tell webpack to generate a source map for our code. Go ahead and run
+
+```
+webpack -d
+```
+
+Now, we get a better log. We can actually see that it comes from line 1 in `index.js`.
+
+# IMAGE
+
+While developing, it’s not fun to have to type webpack over and over again. Using the --watch flag during development means webpack will watch our files and re-generate the bundle every time we save a change. **During development, we’ll want to use both the development flag and the watch flag, so our command will be**
 
 ```
 webpack -d --watch
 ```
-
-Now, we get a better log. We can actually see that it comes from line 1 in `index.js`.
 
 *Every time you change `webpack.config.js`, you’ll need to restart webpack for the changes to affect your bundle.
 
@@ -207,13 +215,13 @@ I mentioned earlier that we want to be able to use new, shiny ES6 code while mak
 npm install -D babel-core babel-loader babel-preset-env
 ```
 
-- Babel-core is a library that takes in code as a string and transpiles it down. 
+- [Babel-core](https://www.npmjs.com/package/babel-core) is a library that takes in code as a string and transpiles it down. 
 
-- Babel-loader is what allows us to tie babel-core into webpack and lets webpack’s configuration know to use the babel-core library. 
+- [Babel-loader](https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fbabel%2Fbabel-loader) is what allows us to tie babel-core into webpack and lets webpack’s configuration know to use the babel-core library. 
 
-- Babel-preset-env is essentially a configuration for babel which lets us pass in options. Without the options, it uses defaults, which means it will understand code up to ES2017 standards and transpile it down to ES5.
+- [Babel-preset-env](https://babeljs.io/docs/plugins/preset-env/#how-it-works) is essentially a configuration for babel which lets us pass in options. Without the options, it uses defaults, which means it will understand code up to ES2017 standards and transpile it down to ES5.
 
-There are a number of ways to configure webpack with babel and we’ll just pick an easy one. You’ll need to add some code into webpack.config.js.
+There are a number of ways to configure webpack with babel and we’ll just pick an easy one. You’ll need to add some code into `webpack.config.js`.
 
 ```
 const path = require('path');
@@ -256,7 +264,7 @@ npm install react react-dom
 npm install -D babel-preset-react
 ```
 
-We’ll have to add a term to our webpack.config.js file to tell it that we’re writing React code.
+We’ll have to add a term to our `webpack.config.js` file to tell it that we’re writing React code.
 
 ```
 const path = require('path');
@@ -304,17 +312,17 @@ ReactDOM.render(myDiv, container);
 Start your server and webpack (use `webpack -d --watch`) to see what’s happening in your browser. Let webpack run in the background so we can continue to see our changes.
 There’s a bunch of stuff going on here, so let’s break it down.
 
-- We can use import statements because webpack will resolve those for us. It’ll grab React and ReactDOM out of our `node_modules` and throw them at the top of our bundle, with the rest of our code below it.
+- We can use `import` statements because webpack will resolve those for us. It’ll grab React and ReactDOM out of our `node_modules` and throw them at the top of our bundle, with the rest of our code below it.
 
 - We’re accessing the div with ID `container`. This is the DOM element that we’ll place our React elements in.
 
-- The next line, creating the variable `myDiv`, is the most exciting. We’re writing something that looks like HTML in our Javascript. myDiv is a variable that contains what we can think of as a DOM element that we just created.
+- The next line, creating the variable `myDiv`, is the most exciting. We’re writing something that looks like HTML in our Javascript. `myDiv` is a variable that contains what we can think of as a DOM element that we just created.
 
 - The last line uses the ReactDOM library to render our myDiv element on the DOM.
 
 Note that we import React, but don’t actually use it anywhere. This is because during transpilation, webpack and babel transform our code.
 
-To see what it finally turns into after webpack runs its magic, we can go to babeljs.io. The code below is the transpiled version of our five-line block above.
+To see what it finally turns into after webpack runs its magic, we can go to [babeljs.io](https://babeljs.io/repl). The code below is the transpiled version of our five-line block above.
 
 ```
 'use strict';
@@ -336,11 +344,15 @@ _reactDom2.default.render(myDiv, container);
 
 We need React in scope because our transpiled code needs access to it, even though we don’t directly use it ourselves. Note also that all ES6 features have been removed — import statements and constant variable declarations are transformed down to ES5.
 
-Run webpack on the terminal to transpile your code. Start the server with npm start and go to [localhost:8080](localhost:8080). You should see what you expect. If we open your browser’s dev tools and inspect the text, we see our div nested inside the container div present in our original HTML.
+Run webpack on the terminal to transpile your code. Start the server with npm start and go to [localhost:8080](localhost:8080). You should see what you expect. If we open your browser’s dev tools and inspect the text, we see our div nested inside the `#container` div present in our original HTML.
+
+# IMAGE
 
 ### JSX
 
-I said we’re writing stuff that looks like HTML. It’s not actually HTML. It’s something called JSX. JSX is something created by Facebook that provides an easy, mostly straightforward syntax to help us write React components. For the most part, it’s very similar to HTML, with a few key differences.
+# IMAGE
+
+I said we’re writing stuff that looks like HTML. It’s not actually HTML. It’s something called [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html). JSX is something created by Facebook that provides an easy, mostly straightforward syntax to help us write React components. For the most part, it’s very similar to HTML, with a few key differences.
 
 Start off writing a JSX component by writing something like you would in HTML. Instead of using the word `class` to denote the class we want to give our element, we need to use `className`. If we want to use Javascript while generating our element, we can use a pair of curly brackets to denote code that should be evaluated. Let’s type some more code into the babel repl and see how this works.
 
@@ -396,11 +408,13 @@ On the DOM, this looks like:
 </div>
 ```
 
+# IMAGE
+
 #### Refactoring the Component
 
-First, let’s go ahead and delete ‘React’ from inside our container div in `dist/app.html`. After that, you should have these changes.
+First, let’s go ahead and delete ‘React’ from inside our container div in `dist/app.html`. After that, you should have [these changes](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/93fd6a7575a2d46a979841f571cb76345db88078).
 
-Let’s make it so `src/index.js` contains logic that only deals with rendering our app to the page. We want to abstract all the JSX into separate files. Let’s create a components folder in **`src`**. In there, let’s create a file called app.js that will contain the logic dealing with creating our site. All `src/index.js` should do is render our app to the DOM.
+Let’s make it so `src/index.js` contains logic that only deals with rendering our app to the page. We want to abstract all the JSX into separate files. Let’s create a **`components`** folder in **`src`**. In there, let’s create a file called `app.js` that will contain the logic dealing with creating our site. All `src/index.js` should do is render our app to the DOM.
 
 <pre>
 <b>project_root</b>
@@ -424,7 +438,7 @@ Let’s make it so `src/index.js` contains logic that only deals with rendering 
 |---webpack.config.js
 </pre>
 
-Let’s start by changing src/index.js a little bit. First, let’s grow our div a little bit. We’ll add an `h1` and a `span` inside our div and we’ll rename `myDiv` to `app`.
+Let’s start by changing `src/index.js` a little bit. First, let’s grow our div a little bit. We’ll add an `h1` and a `span` inside our div and we’ll rename `myDiv` to `app`.
 
 ```
 import React from 'react';
@@ -470,7 +484,8 @@ Again, we need React in scope even though we don’t apply it directly. Without 
 If you refresh your page, you should see that nothing’s changed.
 
 #### Exporting a Component
-We’re going to turn app into a function that returns the JSX we want. We’ll explain why in a second. Change `src/components/app.js` into this.
+
+We’re going to turn `app` into a function that _returns_ the JSX we want. We’ll explain why in a second. Change `src/components/app.js` into this.
 
 ```
 import React from 'react';
@@ -497,18 +512,21 @@ const container = document.getElementById('container');
 ReactDOM.render(<App></App>, container);
 ```
 
-When we import a function that returns JSX, we can use that function as a new element, just like we use what we’re already familar with. We’ve essentially defined a new element. We treat it like we would a div, span, h1-h6, etc. We’re rendering App and treating it just like we would an element, with an opening and closing tag. Using those opening and closing tags invokes the corresponding function and inserts the returned element in their place.
+When we import a function that returns JSX, we can use that function as a new element, just like we use what we’re already familar with. We’ve essentially defined a new element. We treat it like we would a `div`, `span`, `h1`-`h6`, etc. We’re rendering `App` and treating it just like we would an element, with an opening and closing tag. **Using those opening and closing tags invokes the corresponding function and inserts the returned element in their place.**
 
 In addition, an empty tag can be self-closing. In other words,
+
 ```
 <div></div> === <div />
 <App></App> === <App />
 ```
-We’ll be using this shorthand from now on. You should be here.
+
+We’ll be using this shorthand from now on. You should be [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/a2807f2d124e0b01f97d510eed2f4c10b9a16c50).
 
 That’s the basics of the basics. You’re on your way to learning React.
 
 ### CSS
+
 We want to be able to use stylesheets for our website. We need to add some babel configuration. First, we need new dependencies.
 
 ```
@@ -519,7 +537,7 @@ Css-loader will resolve the import statements we use and concatenate CSS into ou
 
 We also need to update `webpack.config.js` to tell it to transform our imported CSS files using these loaders.
 
-<pre>
+```
 const path = require('path');
 
 module.exports = {
@@ -539,20 +557,20 @@ module.exports = {
                         presets: ['react', 'env']
                     }
                 }
-            }<b>,
+            },
             {
                 test: /\.css$/,
                 use: [
                     'style-loader',
                     'css-loader'
                 ]
-            }</b>
+            }
         ]
     }
 };
-</pre>
+```
 
-It’s a “best practice” to create a separate CSS file for each component, with only the CSS needed for that component present in that file. In src, add a styles folder. We’ll create src/styles/index.css and add our main CSS to that file. Let’s also create src/styles/app.css to store more specific CSS.
+It’s a “best practice” to create a separate CSS file for each component, with only the CSS needed for that component present in that file. In **`src`**, add a **`styles`** folder. We’ll create `src/styles/index.css` and add our main CSS to that file. Let’s also create `src/styles/app.css` to store more specific CSS.
 
 <pre>
 <b>project_root</b>
@@ -589,7 +607,7 @@ html, body {
 }
 ```
 
-In src/styles/app.css, we’ll add CSS specific to the component.
+In `src/styles/app.css`, we’ll add CSS specific to the component.
 
 ```
 h1 {
@@ -597,7 +615,7 @@ h1 {
 }
 ```
 
-With our webpack setup, we can import stylesheets directly. Add this directly below the import statements in src/index.js.
+With our webpack setup, we can import stylesheets directly. Add this directly below the import statements in `src/index.js`.
 
 ```
 ...
@@ -606,7 +624,7 @@ import './styles/index.css';
 ...
 ```
 
-And similarly, under the import statement in src/components/app.js:
+And similarly, under the import statement in `src/components/app.js`:
 
 ```
 import React from 'react';
@@ -615,13 +633,19 @@ import '../styles/app.css';
 ```
 
 With webpack running, if we refresh our web page we should see the styled changes.
-The final changes are here. The complete repository is at:
+
+# IMAGE
+
+The final changes are [here](https://github.com/arnav-aggarwal/react-setup-tutorial/commit/2133261712bfb051877647a1cfc7cc14b78b4b4e). The complete repository is at:
+
 https://github.com/arnav-aggarwal/react-setup-tutorial
 
 ### Conclusion
 
-Now you can focus on actually learning React. There are a ton of extra tools we can add — CSS preprocessors, testing frameworks, other libraries such as redux and react-router. But this will get you started.
+Now you can focus on actually learning React. There are a ton of extra tools we can add — CSS preprocessors, testing frameworks, linters, other libraries such as redux and react-router. If interested, see [my more thorough React boilerplate repository](https://github.com/arnav-aggarwal/react-boilerplate-setup). But this will get you started.
 
-If this was useful, please hit the heart and feel free to check out my other articles.
+If this was useful, please hit the heart and feel free to check out my other articles at
 
-#### That’s it. Go learn React.
+https://medium.com/@arnav_aggarwal
+
+### That’s it. Go learn React.
